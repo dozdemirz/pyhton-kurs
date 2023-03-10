@@ -1,0 +1,59 @@
+Soru 1
+
+Veri tipleri
+
+Sayı tipleri:
+float = ondalıklı sayılar için kullanılır
+örneğin:
+  ucret = 5.29
+  
+integer = tam sayılar için kullanılır
+örneğin: 
+  vade = 31
+
+Metin tipleri:
+string = metinler için kullanılır
+örneğin:
+  baslik = "Python Kursu"
+
+Boolean = sadece true veya false değerine sahip veriler için kullanılır
+örneğin:
+  a = 5 > 10
+  b = 4 < 6
+  print(a)  False
+  print(b)  True
+
+Liste = birden çok veri öğesini barındırmak için
+örneğin:
+  karisikliste = [2, 3, 18, 3.3, "masa"]
+
+Haritalama = bir anahtar kelime ve onlara verilen değer arasında ilişki kurulması ile oluşturulur. 
+örneğin:
+  
+
+Soru 2
+Kodlama.io'da veri örnekleri:
+Tüm yazılar string verisi olarak gösterilebilir, örneğin: Kurs Programı, Kurslarım
+Sayı içeren "0% Tamamlanıldı" integer bir veridir
+
+
+
+Soru 3
+Kursun programı içerisindekileri tamamlayarak diğer aşamaya geçmek şartlı veriye örnek olabilir. Öğrenci eğer hepsini tamamlamadıysa diğer aşamaya geçemez.
+
+ders.programi
+degerlendirme           ---> eğer öğrenci bunları tamamladıysa true, tamamlamadıysa false olacak şekilde değerlendirirsek
+odev1
+odev2
+
+if ders.programi == true and degerlendirme == true and odev1 == true and odev2 == true
+  print(Aşamayı geçtiniz. Bitir ve devam et.)
+else:
+  print(Aşamayı henüz tamamlamadınız.)
+
+
+"and" kullanıldığı için birisi bile false olursa diğer aşamaya geçilmez.
+ 
+
+
+
