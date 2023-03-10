@@ -1,4 +1,4 @@
-Soru 1
+*Soru 1
 
 Veri tipleri
 
@@ -29,16 +29,15 @@ Liste = birden çok veri öğesini barındırmak için
 
 Haritalama = bir anahtar kelime ve onlara verilen değer arasında ilişki kurulması ile oluşturulur. 
 örneğin:
-  
 
-Soru 2
+
+*Soru 2
 Kodlama.io'da veri örnekleri:
 Tüm yazılar string verisi olarak gösterilebilir, örneğin: Kurs Programı, Kurslarım
 Sayı içeren "0% Tamamlanıldı" integer bir veridir
 
 
-
-Soru 3
+*Soru 3
 Kursun programı içerisindekileri tamamlayarak diğer aşamaya geçmek şartlı veriye örnek olabilir. Öğrenci eğer hepsini tamamlamadıysa diğer aşamaya geçemez.
 
 ders.programi
@@ -46,13 +45,20 @@ degerlendirme           ---> eğer öğrenci bunları tamamladıysa true, tamaml
 odev1
 odev2
 
-if ders.programi == true and degerlendirme == true and odev1 == true and odev2 == true
+if ders.programi == true and degerlendirme == true and odev1 == true and odev2 == true:
   print(Aşamayı geçtiniz. Bitir ve devam et.)
 else:
   print(Aşamayı henüz tamamlamadınız.)
 
-
 "and" kullanıldığı için birisi bile false olursa diğer aşamaya geçilmez.
+
+
+*Aynı zamanda bu 4 aşama içerisinde de geçişler aynı şekilde yapılabilir. Mesela Ödev1'den Ödev2'ye geçiş için:
+
+if odev1 == true:
+  print(Bitir ve Devam et)
+else:
+print(Lütfen aşamayı tamamlayınız.)
  
 
 
