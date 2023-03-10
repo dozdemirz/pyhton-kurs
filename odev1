@@ -34,7 +34,7 @@ Haritalama = bir anahtar kelime ve onlara verilen değer arasında ilişki kurul
 *Soru 2
 Kodlama.io'da veri örnekleri:
 Tüm yazılar string verisi olarak gösterilebilir, örneğin: Kurs Programı, Kurslarım
-Sayı içerdiği için çektiği veri intger olsa bile "0% Tamamlanıldı" yazıldığında yazıyı dahil etmek için string bir veriye dönüşüyor
+"0% Tamamlanıldı" sayı içerdiği için çektiği veri integer olsa bile yazıyı dahil etmek için string bir veriye dönüşüyor
 
 
 *Soru 3
