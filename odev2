@@ -4,7 +4,7 @@ ogrenci = []
 def ogrenci_ekle():
     ad = input("Öğrencinin adı: ")
     soyad = input("Öğrencinin soyadı: ")
-    ogrenciler.append(adsoyad)
+    ogrenciler.append(ogrenci)
 
 
     def ogrenci_sil(ogrenciler, ad, soyad):
@@ -13,17 +13,17 @@ def ogrenci_ekle():
             ogrenciler.remove(ogrenci)
 
 
-def cok_ogrenci_ekle(ogrenci_listesi):
-      for ogrenci in ogrenci_listesi:
+def cok_ogrenci_ekle(ogrenciler):
+      for ogrenci in ogrenciler:
         ogrenci_ekle(ogrenci)
 
 
-    for numara, ogrenci in enumerate(ogrenci_listesi):
+for numara, ogrenci in enumerate(ogrenciler):
       print(f"{ogrenci} öğrencisinin numarası: {numara}")
 
     #veya
 
-    ad_soyad = input("Öğrencinin adını ve soyadını girin: ")
+ad_soyad = input("Öğrencinin adını ve soyadını girin: ")
 for i in range(len(ogrenciler)):
     if ogrenciler[i] == ad_soyad:
         ogrenci_no = i
@@ -34,11 +34,12 @@ for i in range(len(ogrenciler)):
 
 
 
-    def cok_ogrenci_sil(ogrenci_listesi):
+    def cok_ogrenci_sil(ogrenciler):
       i = 0
-      while i < len(ogrenci_listesi):
-        ogrenci_sil(ogrenci_listesi[i])
+      while i < len(ogrenciler):
+        cok_ogrenci_sil(ogrenciler[i])
         i += 1
+
     
     TEST ETMEK İÇİN*
     
