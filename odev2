@@ -21,7 +21,7 @@ def cok_ogrenci_ekle(ogrenci_listesi):
     for numara, ogrenci in enumerate(ogrenci_listesi):
       print(f"{ogrenci} öğrencisinin numarası: {numara}")
 
-    veya
+    #veya
 
     ad_soyad = input("Öğrencinin adını ve soyadını girin: ")
 for i in range(len(ogrenciler)):
@@ -47,7 +47,7 @@ ogrenci_ekle()
 ogrenci_sil()
 cok_ogrenci_ekle()
 ogrencileri_yazdir()
-print(ogrenci_numara()
+print(ogrenci_numara)
 cok_ogrenci_sil()
 
 
