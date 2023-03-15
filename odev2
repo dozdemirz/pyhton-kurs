@@ -1,0 +1,56 @@
+ogrenciler = []
+ogrenci = []
+
+def ogrenci_ekle():
+    ad = input("Öğrencinin adı: ")
+    soyad = input("Öğrencinin soyadı: ")
+    ogrenciler.append(adsoyad)
+
+
+    def ogrenci_sil(ogrenciler, ad, soyad):
+      for ogrenci in ogrenciler:                               ---->  bu kod sanırım biraz elverişsiz çünkü silinecek kişiyi terminalden yazamıyoruz ama normal çözemedim nedense
+        if ogrenci[0] == ad and ogrenci[1] == soyad:
+            ogrenciler.remove(ogrenci)
+
+
+def cok_ogrenci_ekle(ogrenci_listesi):
+      for ogrenci in ogrenci_listesi:
+        ogrenci_ekle(ogrenci)
+
+
+    for numara, ogrenci in enumerate(ogrenci_listesi):
+      print(f"{ogrenci} öğrencisinin numarası: {numara}")
+
+    veya
+
+    ad_soyad = input("Öğrencinin adını ve soyadını girin: ")
+for i in range(len(ogrenciler)):
+    if ogrenciler[i] == ad_soyad:
+        ogrenci_no = i
+        print("Öğrenci numarası:", ogrenci_no)
+        break
+    else:
+      print("Öğrenci yok.")
+
+
+
+    def cok_ogrenci_sil(ogrenci_listesi):
+      i = 0
+      while i < len(ogrenci_listesi):
+        ogrenci_sil(ogrenci_listesi[i])
+        i += 1
+    
+    TEST ETMEK İÇİN*
+    
+
+ogrenci_ekle()
+ogrenci_sil()
+cok_ogrenci_ekle()
+ogrencileri_yazdir()
+print(ogrenci_numara()
+cok_ogrenci_sil()
+
+
+    
+    
+    
