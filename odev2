@@ -8,7 +8,7 @@ def ogrenci_ekle():
 
 
     def ogrenci_sil(ogrenciler, ad, soyad):
-      for ogrenci in ogrenciler:                               ---->  bu kod sanırım biraz elverişsiz çünkü silinecek kişiyi terminalden yazamıyoruz ama normal çözemedim nedense
+      for ogrenci in ogrenciler:                               #---->  bu kod sanırım biraz elverişsiz çünkü silinecek kişiyi terminalden yazamıyoruz ama normal çözemedim nedense
         if ogrenci[0] == ad and ogrenci[1] == soyad:
             ogrenciler.remove(ogrenci)
 
