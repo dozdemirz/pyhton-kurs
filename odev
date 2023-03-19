@@ -1,0 +1,75 @@
+HTML:
+HTML (Hypertext Markup Language), web sayfalarının yapılandırılması ve sunulması için kullanılan bir programlama dilidir. HTML, web sayfalarının içeriklerini oluşturmak için kullanılan etiketlerden (tags) ve bu etiketlere özellikler (attributes) atamak için kullanılan özniteliklerden (attributes) oluşur. HTML kodları, web tarayıcıları tarafından yorumlanarak kullanıcılara web sayfalarını göstermek için kullanılır.
+
+HTML Locators:
+HTML Locators, web sayfalarındaki belirli bir öğeyi (element) belirlemek için kullanılan bir yöntemdir. Selenium gibi web test araçları, HTML Locators kullanarak web sayfalarındaki öğeleri (element) belirleyebilir ve bu öğelerle etkileşime geçebilir.
+
+HTML Locators, bir öğenin kimliğini (ID), sınıf adını (class name), etiketini (tag name), metnini (text) veya diğer özelliklerini kullanarak belirlenebilir. Bu özellikler, CSS (Cascading Style Sheets) gibi diğer web teknolojilerinde de kullanılır.
+
+Selenium'da aksiyonlar (send_keys, click vb..):
+Selenium, web tarayıcıları üzerinde otomatik test yapmak için kullanılan bir araçtır. Selenium, web sayfalarındaki öğelerle (element) etkileşim kurmak için çeşitli aksiyonlar sağlar.
+
+Selenium'da kullanılan bazı aksiyonlar şunlardır:
+
+send_keys(): Bir öğeye (element) klavyeden metin girmek için kullanılır.
+click(): Bir öğeyi (element) tıklamak için kullanılır.
+clear(): Bir öğenin (element) içeriğini temizlemek için kullanılır.
+submit(): Bir formu göndermek için kullanılır.
+get_attribute(): Bir öğenin (element) belirli bir özelliğini (attribute) almak için kullanılır.
+Bu aksiyonlar, web test senaryoları yazarken kullanılır ve Selenium gibi araçlarla otomatik testler oluşturmak için önemlidir.
+
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+class TestCases:
+    def __init__(self):
+        self.driver = webdriver.Chrome()
+        self.driver.get("https://www.saucedemo.com/")
+    
+    def login(self, username, password):
+        self.driver.find_element_by_id("user-name").send_keys(username)
+        self.driver.find_element_by_id("password").send_keys(password)
+        self.driver.find_element_by_id("login-button").click()
+    
+    def test_case_1(self):
+        self.login("", "")
+        alert = self.driver.find_element_by_css_selector("[data-test='error']")
+        assert alert.is_displayed()
+        assert alert.text == "Epic sadface: Username is required"
+        
+    def test_case_2(self):
+        self.login("standard_user", "")
+        alert = self.driver.find_element_by_css_selector("[data-test='error']")
+        assert alert.is_displayed()
+        assert alert.text == "Epic sadface: Password is required"
+        
+    def test_case_3(self):
+        self.login("locked_out_user", "secret_sauce")
+        alert = self.driver.find_element_by_css_selector("[data-test='error']")
+        assert alert.is_displayed()
+        assert alert.text == "Epic sadface: Sorry, this user has been locked out."
+        
+    def test_case_4(self):
+        self.login("", "")
+        alert = self.driver.find_element_by_css_selector("[data-test='error']")
+        assert alert.is_displayed()
+        close_button = self.driver.find_element_by_css_selector("[data-icon='times']")
+        close_button.click()
+        assert not alert.is_displayed()
+        
+    def test_case_5(self):
+        self.login("standard_user", "secret_sauce")
+        inventory_url = "https://www.saucedemo.com/inventory.html"
+        assert self.driver.current_url == inventory_url
+        
+    def test_case_6(self):
+        self.login("standard_user", "secret_sauce")
+        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".inventory_list")))
+        products = self.driver.find_elements_by_css_selector(".inventory_item")
+        assert len(products) == 6
+        
+    def close(self):
+        self.driver.quit()
