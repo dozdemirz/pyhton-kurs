@@ -73,3 +73,13 @@ class TestCases:
         
     def close(self):
         self.driver.quit()
+        
+        
+        test = TestCases()
+test.test_case_1()
+test.test_case_2()
+test.test_case_3()
+test.test_case_4()
+test.test_case_5()
+test.test_case_6()
+test.close()
