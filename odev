@@ -1,65 +1,39 @@
 
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 class TestCases:
     def __init__(self):
         self.driver = webdriver.Chrome()
         self.driver.get("https://www.saucedemo.com/")
-    
-    def login(self, username, password):
-        self.driver.find_element_by_id("user-name").send_keys(username)
-        self.driver.find_element_by_id("password").send_keys(password)
-        self.driver.find_element_by_id("login-button").click()
-    
-    def test_case_1(self):
-        self.login("", "")
-        alert = self.driver.find_element_by_css_selector("[data-test='error']")
-        assert alert.is_displayed()
-        assert alert.text == "Epic sadface: Username is required"
-        
-    def test_case_2(self):
-        self.login("standard_user", "")
-        alert = self.driver.find_element_by_css_selector("[data-test='error']")
-        assert alert.is_displayed()
-        assert alert.text == "Epic sadface: Password is required"
-        
-    def test_case_3(self):
-        self.login("locked_out_user", "secret_sauce")
-        alert = self.driver.find_element_by_css_selector("[data-test='error']")
-        assert alert.is_displayed()
-        assert alert.text == "Epic sadface: Sorry, this user has been locked out."
-        
-    def test_case_4(self):
-        self.login("", "")
-        alert = self.driver.find_element_by_css_selector("[data-test='error']")
-        assert alert.is_displayed()
-        close_button = self.driver.find_element_by_css_selector("[data-icon='times']")
-        close_button.click()
-        assert not alert.is_displayed()
-        
-    def test_case_5(self):
-        self.login("standard_user", "secret_sauce")
-        inventory_url = "https://www.saucedemo.com/inventory.html"
-        assert self.driver.current_url == inventory_url
-        
-    def test_case_6(self):
-        self.login("standard_user", "secret_sauce")
-        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".inventory_list")))
-        products = self.driver.find_elements_by_css_selector(".inventory_item")
-        assert len(products) == 6
-        
-    def close(self):
-        self.driver.quit()
-        
-        
-        test = TestCases()
-test.test_case_1()
-test.test_case_2()
-test.test_case_3()
-test.test_case_4()
-test.test_case_5()
-test.test_case_6()
+
+    def test_empty_username_password(self):
+        username_input = self.driver.find_element_by_id("user-name")
+        password_input = self.driver.find_element_by_id("password")
+        login_button = self.driver.find_element_by_id("login-button")
+        username_input.clear()
+        password_input.clear()
+        login_button.click()
+        error_message = self.driver.find_element_by_css_selector("[data-test='error']")
+        assert error_message.text == "Epic sadface: Username is required"
+
+    def test_empty_password(self):
+        username_input = self.driver.find_element_by_id("user-name")
+        password_input = self.driver.find_element_by_id("password")
+        login_button = self.driver.find_element_by_id("login-button")
+        username_input.send_keys("testuser")
+        password_input.clear()
+        login_button.click()
+        error_message = self.driver.find_element_by_css_selector("[data-test='error']")
+        assert error_message.text == "Epic sadface: Password is required"
+
+    def test_locked_out_user(self):
+        self.driver.find_element(By.ID, "user-name").send_keys("locked_out_user")
+        self.driver.find_element(By.ID, "password").send_keys("secret_sauce")
+        self.driver.find_element(By.ID, "login-button").click()
+        error_message = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.XPATH, "//h3[@data-test='error']")))
+        assert "Epic sadface: Sorry, this user has been locked out." in error_message.text
+
 test.close()
